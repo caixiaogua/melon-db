@@ -19,7 +19,7 @@ async function main(){
 	let obj={name:"Candy",age:25};
 	await dbc(`db.user=${obj}`);
 	let res=await dbc(`db.count=db.count||0; db.count++; return db.count;`);
-	console.log("post", res);
+	console.log("res", res);
 }
 main();
 ```
