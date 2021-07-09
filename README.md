@@ -20,7 +20,6 @@ async function main(){
 	await dbc(`db.user=${obj}`);
 	let res=await dbc(`db.count=db.count||0; db.count++; return db.count;`);
 	console.log("post", res);
-	ctx.end(res);
 }
 main();
 ```
