@@ -2,7 +2,7 @@
 简单、方便、快速、强大、神奇的数据库引擎
 
 
-···
+```
 // 通过fetch连接数据库
 const fetch=require("node-fetch");
 
@@ -24,9 +24,9 @@ async function main(){
 }
 
 main();
-···
+```
 
-···
+```
 // 在jsgo中使用
 function main(){
 	var s=JSON.stringify({
@@ -36,4 +36,4 @@ function main(){
 	var res=api.httpPost("http://127.0.0.1:1688/", s, "");
 	return res;
 }
-···
+```
