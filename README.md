@@ -22,7 +22,7 @@ async function dbc(s){
 }
 async function main(){
 	// await dbc(`db.init()`); //db.init()为数据库初始化，只需执行一次
-	let obj={name:"Candy",age:25};
+	let obj=`{name:"Candy",age:25}`;
 	await dbc(`db.user=${obj}`);
 	let res=await dbc(`db.count=db.count||0; db.count++; return db.count;`);
 	console.log("res", res);
