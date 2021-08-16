@@ -31,6 +31,21 @@ main();
 ```
 
 ```
+// 在go中使用
+
+package main
+import (
+	"fmt"
+	"jstest/melondb"
+)
+func main() {
+	dbc := melondb.Init("test", "http://127.0.0.1:1688/")
+	res := dbc(`db.init(); db.arr=[1,2,3,"nice"]; return db;`) //db.init()为数据库初始化，仅需执行一次
+	fmt.Println("res", res)
+}
+```
+
+```
 // 在jsgo中使用
 
 function main(){
