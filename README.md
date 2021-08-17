@@ -36,7 +36,7 @@ main();
 package main
 import (
 	"fmt"
-	"jstest/melondb"
+	"github.com/caixiaogua/melon-db/melondb"
 )
 func main() {
 	dbc := melondb.Init("test", "http://127.0.0.1:1688/")
