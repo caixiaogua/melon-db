@@ -49,11 +49,9 @@ func main() {
 // 在jsgo中使用
 
 function dbc(x){
-	var s=JSON.stringify({
-		t:"test", //数据库名称，可自定义
-		s:x
-	});
-	return api.httpPost("http://127.0.0.1:1688/", s, "");
+	var url="http://127.0.0.1:1688/"; //数据服务地址
+	var db="test"; //数据库名称，可自定义
+	return api.httpPost(url,JSON.stringify({t:db,s:x}),"");
 }
 function main(){
 	var res=dbc("db.init(); db.arr=[1,2,3]; return db"); //db.init()为数据库初始化，仅需执行一次
