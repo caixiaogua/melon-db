@@ -48,12 +48,16 @@ func main() {
 ```
 // 在jsgo中使用
 
-function main(){
+function dbc(x){
 	var s=JSON.stringify({
 		t:"test", //数据库名称，可自定义
-		s:"db.init(); db.arr=[1,2,3]; return db" //db.init()为数据库初始化，仅需执行一次
-	})
-	var res=api.httpPost("http://127.0.0.1:1688/", s, "");
+		s:x
+	});
+	return api.httpPost("http://127.0.0.1:1688/", s, "");
+}
+
+function main(){
+	var res=dbc("db.init(); db.arr=[1,2,3]; return db"); //db.init()为数据库初始化，仅需执行一次
 	return res;
 }
 ```
