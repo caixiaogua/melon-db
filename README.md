@@ -14,6 +14,17 @@ db.load()  //重新加载磁盘数据到内存（忽略未保存数据）
 ```
 
 ```
+// 使用范例：
+
+创建数据表：dbc('db.users=[]')
+插入一条数据：dbc('db.users.push({id:1,name:"tom",age:25})')
+返回一个数据表：dbc('return db.users')
+根据条件返回数据：dbc('return db.users.filter(x=>x.id<6)')
+根据条件更新数据：dbc('db.users.find(x=>x.id==1).age=29')
+删除指定条件的数据，并返回新的数据列表：dbc('db.users=db.users.filter(x=>x.age<36); return db.users')
+```
+
+```
 // 在go中使用
 
 package main
