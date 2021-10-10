@@ -77,11 +77,11 @@ main();
 
 ```
 //v4.3新增功能：简易分布式锁
+
 package main
 import (
 	"fmt"
 	"time"
-
 	"github.com/caixiaogua/melon-db/melondb"
 )
 var dbc = melondb.Init("test", "http://127.0.0.1:1688/")
