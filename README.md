@@ -4,6 +4,7 @@
 通过http连接数据库，可以在任何语言和框架中轻松调用，通过提交js指令（事务）操作数据库，无需考虑事务锁问题。
 
 ```
+v4.3 新增简易分布式锁，后文有使用范例
 v4.2 新增数据库可视化管理工具：http://127.0.0.1:1688/ui
 ```
 
@@ -72,4 +73,25 @@ async function main(){
 	console.log("res", res);
 }
 main();
+```
+
+```
+//v4.3新增功能：简易分布式锁
+package main
+import (
+	"fmt"
+	"time"
+
+	"github.com/caixiaogua/melon-db/melondb"
+)
+var dbc = melondb.Init("test", "http://127.0.0.1:1688/")
+func main() {
+	res := dbc(`db.getLock("lock")`)
+	if res == "1" { //获取到分布式锁
+		fmt.Println("working......")
+		time.Sleep(3 * time.Second) //业务代码
+		fmt.Println("work done.")
+		dbc(`db.rmLock("lock")`) //释放锁
+	}
+}
 ```
