@@ -86,12 +86,13 @@ import (
 )
 var dbc = melondb.Init("test", "http://127.0.0.1:1688/")
 func main() {
-	res := dbc(`db.getLock("lock")`)
-	if res == "1" { //获取到分布式锁
+	// db.getLock(锁名称，请求次数（默认10），请求间隔（默认500ms），锁有效时长（默认5000ms）)
+	tk := dbc(`db.getLock("lock")`) //请求分布式锁，成功返回密匙，失败返回空字符
+	if tk != "" {                   //获取到锁
 		fmt.Println("working......")
 		time.Sleep(3 * time.Second) //业务代码
 		fmt.Println("work done.")
-		dbc(`db.rmLock("lock")`) //释放锁
+		dbc(`db.rmLock("lock", "` + tk + `")`) //释放当前锁
 	}
 }
 ```
