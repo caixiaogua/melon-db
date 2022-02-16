@@ -75,6 +75,7 @@ async function main(){
 main();
 ```
 
+```
 // 在dotnet中使用（以net6的miniapi为例）
 
 var JsonParse = (string x) => System.Text.Json.JsonDocument.Parse(x);
