@@ -90,10 +90,10 @@ var httpPost=(string url, string str)=>{
     }
 };
 var dbc=(string x)=>{
-	var url="http://127.0.0.1:1688/"; //数据服务地址
-	var db="test"; //数据库名称，可自定义
+    var url="http://127.0.0.1:1688/"; //数据服务地址
+    var db="test"; //数据库名称，可自定义
     var data=Stringify(new{t=db,s=x});
-	return httpPost(url,data);
+    return httpPost(url,data);
 };
 app.MapGet("/melontest", (HttpContext ctx) =>
 {
