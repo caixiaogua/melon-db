@@ -75,6 +75,34 @@ async function main(){
 main();
 ```
 
+// 在dotnet中使用（以net6的miniapi为例）
+
+var JsonParse = (string x) => System.Text.Json.JsonDocument.Parse(x);
+var Stringify = (object x) => System.Text.Json.JsonSerializer.Serialize(x);
+var httpPost=(string url, string str)=>{
+    using (HttpClient http = new HttpClient())
+    {
+        var content = new StringContent(str, System.Text.Encoding.UTF8, "application/json");
+        HttpResponseMessage res = http.PostAsync(url,content).Result;
+        string data = res.Content.ReadAsStringAsync().Result;
+        return data;
+    }
+};
+var dbc=(string x)=>{
+	var url="http://127.0.0.1:1688/"; //数据服务地址
+	var db="test"; //数据库名称，可自定义
+    var data=Stringify(new{t=db,s=x});
+	return httpPost(url,data);
+};
+app.MapGet("/melontest", (HttpContext ctx) =>
+{
+    //向melondb数据库中的arr数据集中添加一条数据
+    var newData=Stringify(new{name="Tom",age=21});
+    var res=dbc($"db.arr.push({newData});db.save();return db.arr");
+    return res;
+});
+```
+
 ```
 // v4.3新增功能：简易分布式锁
 
