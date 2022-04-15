@@ -31,7 +31,7 @@ func httpPost(url string, data string, ctype string) []byte {
 	// fmt.Println("data", data)
 	res, err := http.Post(url, ctype, strings.NewReader(data))
 	if err != nil {
-		return err.Error()
+		return []byte(`@error(` + err.Error() + `)`)
 	}
 	// fmt.Println("res", res)
 	defer res.Body.Close()
