@@ -1,10 +1,10 @@
 package melondb
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"strings"
 )
 
@@ -22,7 +22,7 @@ func httpGet(url string) string {
 	return src
 }
 
-func httpPost(url string, data string, ctype string) string {
+func httpPost(url string, data string, ctype string) []byte {
 	if ctype == "" {
 		ctype = "application/x-www-form-urlencoded"
 	} else if ctype == "json" {
@@ -39,19 +39,11 @@ func httpPost(url string, data string, ctype string) string {
 	if err != nil {
 		return err.Error()
 	}
-	return string(body)
+	return body
 }
 
-func Init(db string, url string) func(string) string {
-	return func(str string) string {
-		jsonObj := map[string]string{
-			"t": db,
-			"s": str,
-		}
-		data, err := json.Marshal(jsonObj)
-		if err != nil {
-			return "jsonParseError"
-		}
-		return httpPost(url, string(data), "")
+func Init(dburl string) func(string) string {
+	return func(str string) []byte {
+		return httpPost(dburl, url.QueryEscape(str), "")
 	}
 }
