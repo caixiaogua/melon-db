@@ -16,6 +16,7 @@
 根据条件返回数据：dbc('return db.users.filter(x=>x.id<6)')
 根据条件更新数据：dbc('db.users.find(x=>x.id==1).age=29')
 删除指定条件的数据，并返回新的数据列表：dbc('db.users=db.users.filter(x=>x.age<36); return db.users')
+
 系统默认为内存数据库，如果需要持久化数据（写入硬盘），可使用 db.Save() 命令，例如：
 dbc('db.users.push({name:'Jerry",age:19});db.Save();')
 ```
