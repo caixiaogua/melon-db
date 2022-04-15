@@ -33,7 +33,8 @@ import (
 func main() {
 	dbc := melondb.Init("http://127.0.0.1:1688/test")
 	res := dbc(`db.arr=[1,2,3,"nice"]; return db;`)
-	fmt.Println("res", res)
+	str := string(res)
+	fmt.Println("res", str)
 }
 ```
 
