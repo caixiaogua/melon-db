@@ -53,7 +53,7 @@ function main(){
 ```
 // 在nodejs中可以通过fetch连接数据库
 
-const fetch=require("node-fetch");
+import fetch from "node-fetch";
 async function dbc(s){
 	return fetch("http://127.0.0.1:1688/test",{
 		method: "POST",
