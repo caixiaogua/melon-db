@@ -23,7 +23,7 @@
 dbc('db.users.push({name:'Jerry",age:19});db.Save();')
 
 使用 db.Backup() 命令可将当前数据库文件备份到 backup 文件夹。
-dbc('return db.Backup()')	//返回true为备份成功
+dbc('return db.Backup()')	//备份成功返回true，失败返回false
 ```
 
 
