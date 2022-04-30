@@ -21,6 +21,9 @@
 
 系统默认为内存数据库，如果需要持久化数据（写入硬盘），可使用 db.Save() 命令，例如：
 dbc('db.users.push({name:'Jerry",age:19});db.Save();')
+
+使用 db.Backup() 命令可将当前数据库文件备份到 backup 文件夹。
+dbc('return db.Backup()')	//返回true为备份成功
 ```
 
 
