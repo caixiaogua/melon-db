@@ -46,11 +46,9 @@ func main() {
 ```
 // 在jsgo中使用
 
-function dbc(x){
-	return api.httpPost("http://127.0.0.1:1688/test",encodeURIComponent(x),"text/plain"); //test为数据库名
-}
+let dbc=x=>api.httpPost("http://127.0.0.1:1688/test",encodeURIComponent(x)); //test为数据库名
 function main(){
-	var res=dbc("db.arr=[1,2,3]; return db");
+	let res=dbc("db.arr=[1,2,3]; return db");
 	return res;
 }
 ```
