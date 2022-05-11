@@ -44,7 +44,7 @@ func main() {
 ```
 
 ```
-// 在jsgo中使用（https://github.com/caixiaogua/jsgo）
+// 在jsgo中使用
 
 let dbc=x=>api.httpPost("http://127.0.0.1:1688/test",encodeURIComponent(x)); //test为数据库名
 function main(){
@@ -52,7 +52,7 @@ function main(){
 	return res;
 }
 ```
-
+#### 了解jsgo：https://github.com/caixiaogua/jsgo
 ```
 // 在nodejs中可以通过fetch连接数据库
 
