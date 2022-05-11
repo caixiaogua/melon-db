@@ -44,7 +44,7 @@ func main() {
 ```
 
 ```
-// 在jsgo中使用
+// 在jsgo中使用（https://github.com/caixiaogua/jsgo）
 
 let dbc=x=>api.httpPost("http://127.0.0.1:1688/test",encodeURIComponent(x)); //test为数据库名
 function main(){
