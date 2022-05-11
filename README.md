@@ -42,7 +42,7 @@ func main() {
 	fmt.Println("res", str)
 }
 ```
-
+#### 了解jsgo：https://github.com/caixiaogua/jsgo
 ```
 // 在jsgo中使用
 
@@ -52,7 +52,6 @@ function main(){
 	return res;
 }
 ```
-#### 了解jsgo：https://github.com/caixiaogua/jsgo
 
 ```
 // 在nodejs中可以通过fetch连接数据库
