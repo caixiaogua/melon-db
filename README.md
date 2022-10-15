@@ -5,7 +5,7 @@
 
 #### 欢迎加入QQ群：739721147
 
-#### v5.0更新：高度精简框架，使用更便捷
+#### v6.0更新：使用高效的压缩加密的数据存储格式“.dbx”
 
 ##### 启动服务后，可通过 http://localhost:1688/ui 访问webUI
 
@@ -24,6 +24,8 @@ dbc('db.users.push({name:'Jerry",age:19});db.Save();')
 
 使用 db.Backup() 命令可将当前数据库文件备份到 backup 文件夹。
 dbc('return db.Backup()')	//备份成功返回true，失败返回false
+
+dbc('return db.Export("xxx.json")')	//将当前数据库导出为json文件
 ```
 
 
