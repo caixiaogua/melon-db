@@ -16,7 +16,8 @@
 插入一条数据：dbc('db.users.push({id:1,name:"tom",age:25})')
 返回一个数据表：dbc('return db.users')
 根据条件返回数据：dbc('return db.users.filter(x=>x.id<6)')
-根据条件更新数据：dbc('db.users.find(x=>x.id==1).age=29')
+根据条件更新一条数据：dbc('db.users.find(x=>x.id==1).age=29')
+根据条件更新多条数据：dbc('db.users.filter(x=>x.id<10).forEach(x=>x.age=29)')
 删除指定条件的数据，并返回新的数据列表：dbc('db.users=db.users.filter(x=>x.age<36); return db.users')
 
 系统默认为内存数据库，如果需要持久化数据（写入硬盘），可使用 db.Save() 命令，例如：
@@ -25,7 +26,9 @@ dbc('db.users.push({name:'Jerry",age:19});db.Save();')
 使用 db.Backup() 命令可将当前数据库文件备份到 backup 文件夹。
 dbc('return db.Backup()')	//备份成功返回true，失败返回false
 
-dbc('return db.Export("xxx.json")')	//将当前数据库导出为json文件
+使用 db.Export(filename,data?) 命令将当前数据库（或指定数据）导出为json文件
+dbc('return db.Export("xxx.json")')	//将当前数据库导出为xxx.json文件
+dbc('return db.Export("users.json", db.users)')	//将db.users导出为users.json文件
 ```
 
 
