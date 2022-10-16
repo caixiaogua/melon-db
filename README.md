@@ -46,10 +46,16 @@ func main() {
 ```
 #### 了解jsgo：https://github.com/caixiaogua/jsgo
 ```
-// 在jsgo中使用
-
+// 在jsgo7.0以下版本中使用
 let dbc=x=>api.httpPost("http://127.0.0.1:1688/test",encodeURIComponent(x)); //test为数据库名
-function main(){
+function main(ctx){
+	let res=dbc("db.arr=[1,2,3]; return db");
+	return res;
+}
+
+// 在jsgo7.0及以上版本中使用
+let dbc=api.melondb("http://192.168.1.200:1688/test"); //test为数据库名
+function main(ctx){
 	let res=dbc("db.arr=[1,2,3]; return db");
 	return res;
 }
