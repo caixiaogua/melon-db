@@ -30,7 +30,7 @@ dbc('return db.Backup()')	//备份成功返回true，失败返回false
 dbc('return db.Export("xxx.json")')	//将当前数据库导出为xxx.json文件
 dbc('return db.Export("users.json", db.users)')	//将db.users导出为users.json文件
 
-复杂事务，无需考虑锁问题
+复杂事务，也无需考虑锁问题
 例：user1向user2转账100元，金额不足则返回错误信息及实际余额
 dbc(`
   let user1=db.users.find(u=>u.uname="user1");
