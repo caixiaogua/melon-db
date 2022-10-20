@@ -33,8 +33,8 @@ dbc('return db.Export("users.json", db.users)')	//将db.users导出为users.json
 复杂事务，也无需考虑锁问题
 例：user1向user2转账100元，金额不足则返回错误信息及实际余额
 dbc(`
-  let user1=db.users.find(u=>u.uname="user1");
-  let user2=db.users.find(u=>u.uname="user2");
+  let user1=db.users.find(u=>u.uname=="user1");
+  let user2=db.users.find(u=>u.uname=="user2");
   if(user1.money>=100){
     user1.money-=100;
     user2.money+=100;
