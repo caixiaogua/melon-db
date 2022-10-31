@@ -44,26 +44,24 @@ dbc(`
   }
 `);
 
-另外，还可以将以上逻辑代码注册为云函数，例如在go语言中
-sysInit:=0	//是否已初始化
-if sysInit==0 {
-	dbc(`
-		db.fn_pay=function(from,to,num){
-		  let user1=db.users.find(u=>u.uname==from);
-		  let user2=db.users.find(u=>u.uname==to);
-		  if(user1.money>=num){
-		    user1.money-=num;
-		    user2.money+=num;
-		    return {ok:1};
-		  }else{
-		    return {error:"余额不足",money:user1.money};
-		  }
-		}
-	`);
-	sysInit=1;	//标记为已初始化，确保不重复执行
-}
+另外，还可以将以上逻辑代码注册为云函数，例如
+//执行以下代码（仅需一次），在数据库端创建 db.fn_pay 函数
+dbc(`
+	db.fn_pay=function(from,to,num){
+	  let user1=db.users.find(u=>u.uname==from);
+	  let user2=db.users.find(u=>u.uname==to);
+	  if(user1.money>=num){
+	    user1.money-=num;
+	    user2.money+=num;
+	    return {ok:1};
+	  }else{
+	    return {error:"余额不足",money:user1.money};
+	  }
+	}
+`);
 
-dbc(`db.fn_pay("user1","user2",99)`);	//任意地方可调用（跨线程，跨进程，跨服务，跨系统，跨平台）
+//之后，可在任意地方调用（跨线程，跨进程，跨服务，跨系统，跨平台）
+dbc(`db.fn_pay("user1","user2",99)`);
 ```
 
 
