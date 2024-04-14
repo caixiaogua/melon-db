@@ -25,9 +25,9 @@
 删除指定条件的数据，并返回新的数据列表：dbc('db.users=db.users.filter(x=>x.age<36); return db.users')
 
 添加数据时使用自动id：dbc('db.users.push({id:db.AutoID(db.users),name:"tom",age:25})')
-db.AutoID(arr, key='id')带参数时获取arr的自增ID，不带参数则获取唯一字符串ID如：'luzj0gq6-4izv'
+db.AutoID(arr, key='id')带参数时获取arr的自增id，不带参数则获取唯一字符串id如：'luzj0gq6-4izv'
 
-db.FormatDate(t)带参数获取时间戳t对应的格式化日期，不带参数则获取格式化的当前日期，如：2024-04-14 20:22:49
+db.FormatDate(t)带参数时获取时间戳t对应的格式化日期，不带参数则当前日期时间，如：2024-04-14 20:22:49
 
 系统默认为内存数据库，如果需要持久化数据（写入硬盘），可使用 db.Save() 命令，例如：
 dbc('db.users.push({name:'Jerry",age:19});db.Save();')
