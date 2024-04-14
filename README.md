@@ -5,9 +5,11 @@
 
 #### 欢迎加入QQ群：739721147
 
-#### v6.2更新：精简优化，程序体积减小30%，并提供更友好的js错误提示
-#### v6.1更新：优化程序逻辑，数据库并非性能提升20%
-#### v6.0更新：使用更高效的压缩加密格式存储数据（“.dbx”），存储大小减少90%
+#### v6.2更新：
+1. 优化程序逻辑，数据库并非性能提升20%
+2. 精简优化，程序体积减小30%，并提供更友好的js错误提示
+3. 使用更高效的压缩加密格式存储数据（“.dbx”），存储大小减少90%
+4. 新增db.AutoID()和db.FormatDate()方法，可以获取自动id和格式化日期时间
 
 ##### 启动服务后，可通过 http://localhost:1688/ui 访问WebUI数据管理工具
 
@@ -21,6 +23,11 @@
 根据条件更新一条数据：dbc('db.users.find(x=>x.id==1).age=29')
 根据条件更新多条数据：dbc('db.users.filter(x=>x.id<10).forEach(x=>x.age=29)')
 删除指定条件的数据，并返回新的数据列表：dbc('db.users=db.users.filter(x=>x.age<36); return db.users')
+
+添加数据时使用自动id：dbc('db.users.push({id:db.AutoID(db.users),name:"tom",age:25})')
+db.AutoID(arr, key='id')带参数获取arr的自增ID，不带参数则获取唯一字符串ID如：'luzj0gq6-4izv'
+
+db.FormatDate(t)带参数获取时间戳t对应的格式化日期，不带参数则获取格式化的当前日期，如：2024-04-14 20:22:49
 
 系统默认为内存数据库，如果需要持久化数据（写入硬盘），可使用 db.Save() 命令，例如：
 dbc('db.users.push({name:'Jerry",age:19});db.Save();')
