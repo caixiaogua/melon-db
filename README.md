@@ -25,7 +25,7 @@
 删除指定条件的数据，并返回新的数据列表：dbc('db.users=db.users.filter(x=>x.age<36); return db.users')
 
 添加数据时使用自动id：dbc('db.users.push({id:db.AutoID(db.users),name:"tom",age:25})')
-db.AutoID(arr, key='id')带参数获取arr的自增ID，不带参数则获取唯一字符串ID如：'luzj0gq6-4izv'
+db.AutoID(arr, key='id')带参数时获取arr的自增ID，不带参数则获取唯一字符串ID如：'luzj0gq6-4izv'
 
 db.FormatDate(t)带参数获取时间戳t对应的格式化日期，不带参数则获取格式化的当前日期，如：2024-04-14 20:22:49
 
